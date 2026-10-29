@@ -1,0 +1,11 @@
+progressive_pass_distance: 0.12
+pressure_threshold: 0.55
+high_pressure_threshold: 0.72
+transition_time_threshold: 12
+state_change_threshold: 0.15
+pattern_significance_threshold: 0.55
+candidate_priority_threshold: 0.35
+deduplication_window: 300
+insight_ttl_seconds: 300
+final_third_x: 0.67
+box_x: 0.84

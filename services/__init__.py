@@ -1,0 +1,2 @@
+"""SQUEEZE service adapters."""
+

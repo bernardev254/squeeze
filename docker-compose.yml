@@ -1,0 +1,31 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: api
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+  processor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: worker
+    env_file:
+      - .env
+  simulator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: simulator
+    env_file:
+      - .env
+    environment:
+      LIVE_FEED_SPEED: 10
+      LIVE_FEED_MIN_DELAY_MS: 600
+      LIVE_FEED_MAX_DELAY_MS: 4000
+      LIVE_FEED_SCENARIO: press_counter_goal
+      LIVE_FEED_LOOP: "false"
+

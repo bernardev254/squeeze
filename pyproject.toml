@@ -1,0 +1,74 @@
+[project]
+name = "squeeze"
+version = "0.1.0"
+description = "SQUEEZE Phase 1 deterministic football intelligence core"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.115.0",
+  "pydantic>=2.8.0",
+  "pyyaml>=6.0.0",
+  "uvicorn>=0.30.0",
+  "azure-ai-projects>=2.8.0",
+  "azure-eventhub>=5.12.0",
+  "azure-identity>=1.17.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0.0",
+  "ruff>=0.6.0",
+  "mypy>=1.10.0",
+]
+cloud = [
+  "azure-ai-projects>=2.8.0",
+  "azure-eventhub>=5.12.0",
+  "azure-identity>=1.17.0",
+]
+
+[build-system]
+requires = ["setuptools>=69.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = [
+  "domain",
+  "domain.agents",
+  "domain.causal",
+  "domain.events",
+  "domain.insights",
+  "domain.match",
+  "domain.metrics",
+  "domain.patterns",
+  "domain.processing",
+  "domain.sequences",
+  "services",
+  "services.agents",
+  "services.cloud",
+  "services.evaluation",
+  "services.insight_engine",
+  "services.match_engine",
+  "services.observability",
+  "services.repositories",
+  "services.streaming",
+  "services.validation",
+  "simulator",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.12"
+plugins = ["pydantic.mypy"]
+ignore_missing_imports = true
+strict = true
+disable_error_code = ["prop-decorator", "type-arg"]
